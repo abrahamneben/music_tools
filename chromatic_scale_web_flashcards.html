@@ -9,7 +9,7 @@
 	text-align: center;
 }
 #notesequence{
-	font-size: 18pt;
+	font-size: 24pt;
 	width:100%;
 	text-align: center;
 }
@@ -41,7 +41,7 @@ function randomize(){
 	
 	random_note_sequence = '';
 	for(i = 0; i < 20; i++){
-		random_note_sequence += random_note()+'  ';
+		random_note_sequence += random_note()+'&nbsp;&nbsp;';
 	}
 	$('#notesequence').html(random_note_sequence);
 }
@@ -51,6 +51,11 @@ $(window).keypress(function(e) {
     	randomize();
     }
 });
+
+$(document).on('touchstart', function() {
+    if (event.type == "click") detectTap = true; //detects click events 
+       randomize();
+ });
 
 document.onclick= function(event) {
     // Compensate for IE<9's non-standard event model
@@ -62,7 +67,7 @@ document.onclick= function(event) {
 </script>
 </head>
 <body>
-<div>Press spacebar or click to randomize</div>
+<div>Press spacebar or click to randomize (Rev 3)</div>
 <div id='note'></div>
 <div id='notesequence'></div>
 <script type="text/javascript">randomize();</script>
